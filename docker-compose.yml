@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  lemonldap:
+    image: gmateu/soc-lemonldap-ng-docker
+    container_name: lemonldap
+    labels:
+      - "traefik.backend=lemonldap"
+      - "traefik.frontend.rule=Host:auth.soc.imerir,manager.soc.imerir,reload.soc.imerir,test1.soc.imerir,test2.soc.imerir"
+      - "traefik.port=80"
+      - "traefik.docker.network=traefik_default"
+    volumes:
+      - ./data/log/apache2:/var/log/apache2
+    networks:
+      proxy:
+      ldap:
+
+networks:
+  proxy:
+    external:
+      name: traefik_default
+
+  ldap:
+    external:
+      name: ldap_default
