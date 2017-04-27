@@ -6,7 +6,7 @@ FROM debian:jessie
 MAINTAINER Clément OUDOT
 
 # Change SSO DOMAIN here
-ENV SSODOMAIN example.com
+ENV SSODOMAIN soc.imerir
 
 # Update system
 RUN apt-get -y update && apt-get -y dist-upgrade
